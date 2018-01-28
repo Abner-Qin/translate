@@ -1,0 +1,59 @@
+新建单页面时<div id="translateForm"></div>里的translateForm对于该页面的script里name值translateForm  
+app.vue根页面里写 
+<translateForm></translateForm> 
+引入import TranslateForm from './components/translateForm' 
+components:{
+	TranslateForm
+  }
+引入组件即可
+<form v-on:submit="formSubmit">
+对应
+ <input type="submit" value="翻译">
+点击可触发事件
+e.preventDefault() 取消默认事件（点击submit刷新页面添加之后就不刷新了）
+this.$emit()默认一个参数，注册的对象，其他的参数则是传递的实参。
+事件注册 把事件沿着作用域链向上派送。（触发事件）！！
+在这是相当于子调父 $emit (把子组件的数据传给父组件) 
+translateForm.vue向父组件app.vue传值
+例如子组件中写this.$emit('formSubmitData',this.textToTranslate)
+父组件中通过子组建本身的组件接收
+<translateForm v-on:submitdata="translateText"></translateForm>
+然后
+methods:{
+  	translateText:function(text){
+  		alert(text)
+  	}
+  },
+就可以弹出子页面中输入的文字了
+另补充一些指令缩写
+v-bind ：
+v-on   @
+$on()——监听事件。
+$emit()——把事件沿着作用域链向上派送。（触发事件）！！
+$dispatch()——派发事件，事件沿着父链冒泡。
+$broadcast()——广播事件，事件向下传导给所有的后代。
+
+Vuejs 用$emit 与 $on 来进行兄弟组件之间的数据传输
+
+
+https://tech.yandex.com/获取翻译api
+因为要使用http请求所以安装vue-resource  不支持IE 9以下的浏览器，其他主流的浏览器都支持
+指令 npm install vue-resource --save
+在main.js中引入资源请求插件
+import VueResource from 'vue-resource'
+/*使用VueResource插件*/
+Vue.use(VueResource)
+之后就可使用了
+this.$http.get('/someUrl', [options]).then(function(response){
+    // 响应成功回调
+}, function(response){
+    // 响应错误回调
+});
+要用到翻译API中的api keys 和阅读文档（Translate api）
+链接是在Translate api 中的Translate text中https://translate.yandex.net/api/v1.5/tr.json/translate？key值&语言值&text输入的需要翻译的内容
+如
+https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180124T021318Z.690b0fe6c50ec2a0.e4df0f1d74c6f253690c05b87e7045f4d0e7ebe3&lang='+language+'&text='+text
+页面优化使用https://bootswatch.com/
+
+“prop” 是组件数据的一个字段，期望从父组件传下来。子组件需要显式地用 props 选项
+
