@@ -1,59 +1,63 @@
-ĞÂ½¨µ¥Ò³ÃæÊ±<div id="translateForm"></div>ÀïµÄtranslateForm¶ÔÓÚ¸ÃÒ³ÃæµÄscriptÀïnameÖµtranslateForm  
-app.vue¸ùÒ³ÃæÀïĞ´ 
+æ–°å»ºå•é¡µé¢æ—¶<div id="translateForm"></div>é‡Œçš„translateFormå¯¹äºè¯¥é¡µé¢çš„scripté‡Œnameå€¼translateForm  
+app.vueæ ¹é¡µé¢é‡Œå†™ 
 <translateForm></translateForm> 
-ÒıÈëimport TranslateForm from './components/translateForm' 
+å¼•å…¥import TranslateForm from './components/translateForm' 
 components:{
 	TranslateForm
   }
-ÒıÈë×é¼ş¼´¿É
+å¼•å…¥ç»„ä»¶å³å¯
 <form v-on:submit="formSubmit">
-¶ÔÓ¦
- <input type="submit" value="·­Òë">
-µã»÷¿É´¥·¢ÊÂ¼ş
-e.preventDefault() È¡ÏûÄ¬ÈÏÊÂ¼ş£¨µã»÷submitË¢ĞÂÒ³ÃæÌí¼ÓÖ®ºó¾Í²»Ë¢ĞÂÁË£©
-this.$emit()Ä¬ÈÏÒ»¸ö²ÎÊı£¬×¢²áµÄ¶ÔÏó£¬ÆäËûµÄ²ÎÊıÔòÊÇ´«µİµÄÊµ²Î¡£
-ÊÂ¼ş×¢²á °ÑÊÂ¼şÑØ×Å×÷ÓÃÓòÁ´ÏòÉÏÅÉËÍ¡££¨´¥·¢ÊÂ¼ş£©£¡£¡
-ÔÚÕâÊÇÏàµ±ÓÚ×Óµ÷¸¸ $emit (°Ñ×Ó×é¼şµÄÊı¾İ´«¸ø¸¸×é¼ş) 
-translateForm.vueÏò¸¸×é¼şapp.vue´«Öµ
-ÀıÈç×Ó×é¼şÖĞĞ´this.$emit('formSubmitData',this.textToTranslate)
-¸¸×é¼şÖĞÍ¨¹ı×Ó×é½¨±¾ÉíµÄ×é¼ş½ÓÊÕ
-<translateForm v-on:submitdata="translateText"></translateForm>
-È»ºó
+å¯¹åº”
+ <input type="submit" value="ç¿»è¯‘">
+ç‚¹å‡»å¯è§¦å‘äº‹ä»¶
+e.preventDefault() å–æ¶ˆé»˜è®¤äº‹ä»¶ï¼ˆç‚¹å‡»submitåˆ·æ–°é¡µé¢æ·»åŠ ä¹‹åå°±ä¸åˆ·æ–°äº†ï¼‰
+this.$emit()é»˜è®¤ä¸€ä¸ªå‚æ•°ï¼Œæ³¨å†Œçš„å¯¹è±¡ï¼Œå…¶ä»–çš„å‚æ•°åˆ™æ˜¯ä¼ é€’çš„å®å‚ã€‚
+äº‹ä»¶æ³¨å†Œ æŠŠäº‹ä»¶æ²¿ç€ä½œç”¨åŸŸé“¾å‘ä¸Šæ´¾é€ã€‚ï¼ˆè§¦å‘äº‹ä»¶ï¼‰ï¼ï¼
+åœ¨è¿™æ˜¯ç›¸å½“äºå­è°ƒçˆ¶ $emit (æŠŠå­ç»„ä»¶çš„æ•°æ®ä¼ ç»™çˆ¶ç»„ä»¶) 
+translateForm.vueå‘çˆ¶ç»„ä»¶app.vueä¼ å€¼
+ä¾‹å¦‚å­ç»„ä»¶ä¸­å†™this.$emit('formSubmitData',this.textToTranslate)
+çˆ¶ç»„ä»¶ä¸­é€šè¿‡å­ç»„ä»¶æœ¬èº«çš„ç»„ä»¶æ¥æ”¶
+<translateForm v-on:formSubmitData="translateText"></translateForm>
+ç„¶å
 methods:{
   	translateText:function(text){
   		alert(text)
   	}
   },
-¾Í¿ÉÒÔµ¯³ö×ÓÒ³ÃæÖĞÊäÈëµÄÎÄ×ÖÁË
-Áí²¹³äÒ»Ğ©Ö¸ÁîËõĞ´
-v-bind £º
+å°±å¯ä»¥å¼¹å‡ºå­é¡µé¢ä¸­è¾“å…¥çš„æ–‡å­—äº†
+å¦è¡¥å……ä¸€äº›æŒ‡ä»¤ç¼©å†™
+v-bind ï¼š
 v-on   @
-$on()¡ª¡ª¼àÌıÊÂ¼ş¡£
-$emit()¡ª¡ª°ÑÊÂ¼şÑØ×Å×÷ÓÃÓòÁ´ÏòÉÏÅÉËÍ¡££¨´¥·¢ÊÂ¼ş£©£¡£¡
-$dispatch()¡ª¡ªÅÉ·¢ÊÂ¼ş£¬ÊÂ¼şÑØ×Å¸¸Á´Ã°Åİ¡£
-$broadcast()¡ª¡ª¹ã²¥ÊÂ¼ş£¬ÊÂ¼şÏòÏÂ´«µ¼¸øËùÓĞµÄºó´ú¡£
+$on()â€”â€”ç›‘å¬äº‹ä»¶ã€‚
+$emit()â€”â€”æŠŠäº‹ä»¶æ²¿ç€ä½œç”¨åŸŸé“¾å‘ä¸Šæ´¾é€ã€‚ï¼ˆè§¦å‘äº‹ä»¶ï¼‰ï¼ï¼
+$dispatch()â€”â€”æ´¾å‘äº‹ä»¶ï¼Œäº‹ä»¶æ²¿ç€çˆ¶é“¾å†’æ³¡ã€‚
+$broadcast()â€”â€”å¹¿æ’­äº‹ä»¶ï¼Œäº‹ä»¶å‘ä¸‹ä¼ å¯¼ç»™æ‰€æœ‰çš„åä»£ã€‚
 
-Vuejs ÓÃ$emit Óë $on À´½øĞĞĞÖµÜ×é¼şÖ®¼äµÄÊı¾İ´«Êä
+Vuejs ç”¨$emit ä¸ $on æ¥è¿›è¡Œå…„å¼Ÿç»„ä»¶ä¹‹é—´çš„æ•°æ®ä¼ è¾“
 
 
-https://tech.yandex.com/»ñÈ¡·­Òëapi
-ÒòÎªÒªÊ¹ÓÃhttpÇëÇóËùÒÔ°²×°vue-resource  ²»Ö§³ÖIE 9ÒÔÏÂµÄä¯ÀÀÆ÷£¬ÆäËûÖ÷Á÷µÄä¯ÀÀÆ÷¶¼Ö§³Ö
-Ö¸Áî npm install vue-resource --save
-ÔÚmain.jsÖĞÒıÈë×ÊÔ´ÇëÇó²å¼ş
+https://tech.yandex.com/è·å–ç¿»è¯‘api
+å› ä¸ºè¦ä½¿ç”¨httpè¯·æ±‚æ‰€ä»¥å®‰è£…vue-resource  ä¸æ”¯æŒIE 9ä»¥ä¸‹çš„æµè§ˆå™¨ï¼Œå…¶ä»–ä¸»æµçš„æµè§ˆå™¨éƒ½æ”¯æŒ
+æŒ‡ä»¤ npm install vue-resource --save
+åœ¨main.jsä¸­å¼•å…¥èµ„æºè¯·æ±‚æ’ä»¶
 import VueResource from 'vue-resource'
-/*Ê¹ÓÃVueResource²å¼ş*/
+/*ä½¿ç”¨VueResourceæ’ä»¶*/
 Vue.use(VueResource)
-Ö®ºó¾Í¿ÉÊ¹ÓÃÁË
+ä¹‹åå°±å¯ä½¿ç”¨äº†
 this.$http.get('/someUrl', [options]).then(function(response){
-    // ÏìÓ¦³É¹¦»Øµ÷
+    // å“åº”æˆåŠŸå›è°ƒ
 }, function(response){
-    // ÏìÓ¦´íÎó»Øµ÷
+    // å“åº”é”™è¯¯å›è°ƒ
 });
-ÒªÓÃµ½·­ÒëAPIÖĞµÄapi keys ºÍÔÄ¶ÁÎÄµµ£¨Translate api£©
-Á´½ÓÊÇÔÚTranslate api ÖĞµÄTranslate textÖĞhttps://translate.yandex.net/api/v1.5/tr.json/translate£¿keyÖµ&ÓïÑÔÖµ&textÊäÈëµÄĞèÒª·­ÒëµÄÄÚÈİ
-Èç
-https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180124T021318Z.690b0fe6c50ec2a0.e4df0f1d74c6f253690c05b87e7045f4d0e7ebe3&lang='+language+'&text='+text
-Ò³ÃæÓÅ»¯Ê¹ÓÃhttps://bootswatch.com/
+è¦ç”¨åˆ°ç¿»è¯‘APIä¸­çš„api keys å’Œé˜…è¯»æ–‡æ¡£ï¼ˆTranslate apiï¼‰
+é“¾æ¥æ˜¯åœ¨Translate api ä¸­çš„Translate textä¸­https://translate.yandex.net/api/v1.5/tr.json/translateï¼Ÿkeyå€¼&è¯­è¨€å€¼&textè¾“å…¥çš„
 
-¡°prop¡± ÊÇ×é¼şÊı¾İµÄÒ»¸ö×Ö¶Î£¬ÆÚÍû´Ó¸¸×é¼ş´«ÏÂÀ´¡£×Ó×é¼şĞèÒªÏÔÊ½µØÓÃ props Ñ¡Ïî
+éœ€è¦ç¿»è¯‘çš„å†…å®¹
+å¦‚
+https://translate.yandex.net/api/v1.5/tr.json/translate?
+
+key=trnsl.1.1.20180124T021318Z.690b0fe6c50ec2a0.e4df0f1d74c6f253690c05b87e7045f4d0e7ebe3&lang='+language+'&text='+text
+é¡µé¢ä¼˜åŒ–ä½¿ç”¨https://bootswatch.com/
+
+â€œpropâ€ æ˜¯ç»„ä»¶æ•°æ®çš„ä¸€ä¸ªå­—æ®µï¼ŒæœŸæœ›ä»çˆ¶ç»„ä»¶ä¼ ä¸‹æ¥ã€‚å­ç»„ä»¶éœ€è¦æ˜¾å¼åœ°ç”¨ props é€‰é¡¹
 
